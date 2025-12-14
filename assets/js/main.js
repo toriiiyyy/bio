@@ -114,3 +114,34 @@
     setBtn(false, false);
   });
 })();
+window.openTelegram = function () {
+  window.open("https://t.me/toriiiyuy", "_blank", "noopener,noreferrer");
+};
+
+window.copyText = async function (text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast("Скопировано");
+  } catch (e) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
+    showToast("Скопировано");
+  }
+};
+
+function showToast(msg) {
+  let t = document.querySelector(".toast");
+  if (!t) {
+    t = document.createElement("div");
+    t.className = "toast";
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove("show"), 1400);
+}
