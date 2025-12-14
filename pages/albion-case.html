@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Albion Profit Calculator — Case Study</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <a href="./projects.html" class="back-btn">← Back</a>
+
+  <!-- MUSIC PLAYER -->
+  <div class="player-badge" role="group" aria-label="Music player">
+    <button id="playBtn" class="play-btn" type="button" aria-label="Play/Pause">▶</button>
+    <div class="track">
+      <strong>oOoOo</strong>
+      <span>dj trippie flameboy</span>
+    </div>
+  </div>
+  <audio id="music" src="../assets/music.mp3" loop></audio>
+
+  <main class="page is-ready">
+    <section class="card card-wide">
+      <h1>Security Case Study</h1>
+      <p class="sub">Albion Profit Calculator</p>
+
+      <div class="case-header">
+        <div>
+          <p class="muted">Role</p>
+          <p><strong>Co-developer (Backend/API) & Security Researcher</strong></p>
+        </div>
+        <div>
+          <p class="muted">Environment</p>
+          <p><strong>Production (owner-approved)</strong></p>
+        </div>
+        <div>
+          <p class="muted">Period</p>
+          <p><strong>11.2025</strong></p>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">1) Overview</h2>
+        <p>
+          Albion Profit Calculator is a web application (frontend + backend REST API).
+          I contributed to backend/API development and performed an internal security audit
+          in <strong>November 2025</strong>, focused on authorization boundaries,
+          admin endpoints and JWT handling.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">2) Scope</h2>
+        <div class="case-grid">
+          <div class="case-block">
+            <h3>Included</h3>
+            <ul>
+              <li>REST API (<code>/api/*</code>)</li>
+              <li>Authentication &amp; Authorization</li>
+              <li>JWT tokens</li>
+              <li>Admin endpoints</li>
+              <li>RBAC</li>
+            </ul>
+          </div>
+          <div class="case-block">
+            <h3>Excluded</h3>
+            <ul>
+              <li>DDoS</li>
+              <li>Social engineering</li>
+              <li>Physical access</li>
+              <li>Password brute-force of real users</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">3) Finding #1 — Broken Access Control / Privilege Escalation</h2>
+        <div class="case-row">
+          <span class="badge critical">Critical</span>
+          <span class="badge owasp">OWASP A01:2021</span>
+          <span class="badge type">Logical</span>
+        </div>
+
+        <p>
+          A regular authenticated user (<code>role=user</code>) could access admin-only API endpoints
+          due to missing role enforcement at the middleware level.
+        </p>
+
+        <div class="case-grid">
+          <div class="case-block">
+            <h3>Affected endpoints</h3>
+            <ul>
+              <li><code>GET /api/admin/users</code></li>
+              <li><code>GET /api/admin/roles</code></li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <h3>Preconditions</h3>
+            <ul>
+              <li>User is registered</li>
+              <li>Valid JWT (<code>role=user</code>)</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <h3>Actual vs Expected</h3>
+            <ul>
+              <li>Actual: <code>200 OK</code> + full users list</li>
+              <li>Expected: <code>403 Forbidden</code></li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <h3>Impact</h3>
+            <ul>
+              <li>User database exposure</li>
+              <li>Enumeration &amp; role mapping</li>
+              <li>Violation of least privilege</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="codebox">
+<pre><code>curl -H "Authorization: Bearer &lt;user_token&gt;" http://&lt;host&gt;/api/admin/users</code></pre>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">4) Finding #2 — Excessive Data Exposure</h2>
+        <div class="case-row">
+          <span class="badge high">High</span>
+          <span class="badge owasp">OWASP A03:2021</span>
+        </div>
+
+        <p>
+          An administrative endpoint returned an oversized response (~900 KB) with no pagination and
+          insufficient data minimization.
+        </p>
+
+        <ul>
+          <li>Mass data leak risk</li>
+          <li>Easier automation for attackers</li>
+          <li>Increased backend load</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">5) JWT Review</h2>
+        <ul>
+          <li>Algorithm: <strong>HS256</strong></li>
+          <li><code>exp</code> validation: ✅</li>
+          <li><code>iat</code> validation: ✅</li>
+          <li>Role tampering in payload: ❌ (server does not trust client claims)</li>
+          <li><code>alg=none</code>: ❌ (not vulnerable)</li>
+        </ul>
+        <p class="muted">
+          Note: The main risk was missing strict role enforcement for admin routes.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">6) Root Cause</h2>
+        <ul>
+          <li>No RBAC middleware on <code>/api/admin/*</code></li>
+          <li>JWT validity checked without authorization logic</li>
+          <li>No centralized access-control layer</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">7) Remediation</h2>
+        <ul>
+          <li>Implemented RBAC middleware: <code>requireAuth</code> + <code>requireRole('admin')</code></li>
+          <li>Protected <code>/api/admin/*</code></li>
+          <li>Reduced data exposure + added pagination</li>
+          <li>Added audit logging for admin requests</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">8) Status</h2>
+        <p><strong>Fixed</strong> ✅ — verified by retesting after patch, no regression found.</p>
+      </div>
+
+      <div class="about-block">
+        <h2 class="h2">9) Portfolio Summary</h2>
+        <ul>
+          <li>Identified and fixed critical Broken Access Control</li>
+          <li>Prevented admin-level data exposure</li>
+          <li>Implemented RBAC security model</li>
+          <li>Conducted JWT security analysis</li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
