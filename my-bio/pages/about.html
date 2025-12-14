@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — toriiiyyy</title>
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- BACKGROUND -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- MUSIC PLAYER (TOP CENTER) -->
+  <div class="player-badge" role="group" aria-label="Music player">
+    <button id="playBtn" class="play-btn" type="button" aria-label="Play/Pause">▶</button>
+    <div class="track">
+      <strong>oOoOo</strong>
+      <span>dj trippie flameboy</span>
+    </div>
+  </div>
+  <audio id="music" src="../assets/music.mp3" loop></audio>
+
+  <!-- BACK BUTTON -->
+  <a href="../index.html" class="back-btn">← Back</a>
+
+  <!-- PAGE -->
+  <main class="page is-ready">
+    <section class="card">
+      <h1>About me</h1>
+      <p class="sub">who I am &amp; what I do</p>
+
+      <div class="about-block">
+        <p><strong>Role:</strong> Coder / Pentester</p>
+        <p><strong>Age:</strong> 16 y.o</p>
+        <p><strong>Country:</strong> Ukraine</p>
+        <p><strong>Name:</strong> ???</p>
+      </div>
+
+      <div class="about-block">
+        <p><strong>Programming languages:</strong></p>
+        <ul>
+          <li>Python — medium</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>C++</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <p><strong>Skills:</strong></p>
+
+        <div class="skill">
+          <div class="skill-header"><span>Python</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header"><span>HTML</span><span>60%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header"><span>CSS</span><span>55%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header"><span>C++</span><span>45%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:45%"></div></div>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <p><strong>Performance:</strong></p>
+        <p>
+          Пишу абсолютно любой код на Python, включая back-end.
+          Работаю с логикой, API, автоматизацией, инструментами безопасности
+          и внутренними сервисами.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS (обязательно для кнопки плеера) -->
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

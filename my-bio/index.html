@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>toriiiyyy</title>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- BACKGROUND -->
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- MUSIC PLAYER (TOP CENTER) -->
+  <div class="player-badge" role="group" aria-label="Music player">
+    <button id="playBtn" class="play-btn" type="button" aria-label="Play/Pause">▶</button>
+    <div class="track">
+      <strong>oOoOo</strong>
+      <span>dj trippie flameboy</span>
+    </div>
+  </div>
+
+  <audio id="music" src="assets/music.mp3" loop></audio>
+
+  <!-- PAGE -->
+  <main class="page is-ready">
+    <!-- CENTER CARD -->
+    <section class="card">
+      <!-- PHOTO ABOVE TEXT -->
+      <img class="avatar" src="assets/img/avatar.jpg" alt="Profile photo" />
+
+      <h1>toriiiyyy</h1>
+      <p class="sub">personal page</p>
+
+      <!-- NAVIGATION -->
+      <nav class="nav" aria-label="Navigation">
+        <a href="pages/projects.html">Projects</a>
+        <a href="pages/about.html">About</a>
+      </nav>
+    </section>
+  </main>
+
+  <!-- CONTACT LINKS (BOTTOM CENTER) -->
+  <div class="links" aria-label="Contacts">
+    <button class="link" type="button" onclick="openTelegram()">
+      <img src="assets/telegram.jpg" alt="Telegram" />
+      <span>Telegram</span>
+    </button>
+
+    <button class="link" type="button" onclick="copyText('toriiiyyy@toriiiyyy.xyz')">
+      <img src="assets/gmail.jpg" alt="Email" />
+      <span>Email</span>
+    </button>
+
+    <button class="link" type="button" onclick="copyText('gofa')">
+      <img src="assets/discord.jpg" alt="Discord" />
+      <span>Discord</span>
+    </button>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
