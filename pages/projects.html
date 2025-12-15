@@ -4,15 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — toriiiyyy</title>
+
   <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
 
 <body>
+  <!-- BACKGROUND -->
   <div class="bg" aria-hidden="true"></div>
 
+  <!-- BACK BUTTON -->
   <a href="../index.html" class="back-btn">← Back</a>
 
-  <!-- MUSIC PLAYER -->
+  <!-- MUSIC PLAYER (TOP CENTER) -->
   <div class="player-badge" role="group" aria-label="Music player">
     <button id="playBtn" class="play-btn" type="button" aria-label="Play/Pause">▶</button>
     <div class="track">
@@ -20,86 +23,70 @@
       <span>dj trippie flameboy</span>
     </div>
   </div>
+
   <audio id="music" src="../assets/music.mp3" loop></audio>
 
+  <!-- PAGE -->
   <main class="page is-ready">
-    <section class="card card-wide">
+    <section class="card card-lg">
       <h1>Projects</h1>
-      <p class="sub">case studies & work samples</p>
+      <p class="sub">selected work & research</p>
 
-      <article class="project-card">
-        <div class="project-top">
-          <div>
-            <h2 class="project-title">Albion Profit Calculator</h2>
-            <p class="project-meta">Security Case Study • Backend/API • RBAC • JWT</p>
+      <div class="projects-grid">
+        <!-- Project: Coming soon (separate page) -->
+        <article class="project-card">
+          <div class="project-top">
+            <h2>Coming Soon</h2>
+            <span class="badge">WIP</span>
           </div>
-          <span class="badge critical">Critical</span>
-        </div>
+          <p class="project-desc">
+            Additional security & backend projects, automation tooling, and new case studies.
+          </p>
 
-        <p class="project-desc">
-          Co-developed backend REST API and performed an internal security audit in production (owner-approved).
-          Found and remediated a Broken Access Control issue and reduced excessive data exposure on admin endpoints.
-        </p>
-
-        <div class="project-actions">
-          <a class="btn" href="./albion-case.html">Open case study</a>
-          <button class="btn ghost" type="button" onclick="toggleCase()">Quick view</button>
-        </div>
-
-        <div id="casePreview" class="case-preview" hidden>
-          <div class="case-grid">
-            <div class="case-block">
-              <h3>Finding #1</h3>
-              <p><strong>Broken Access Control / Privilege Escalation</strong></p>
-              <ul>
-                <li>role=user could call <code>/api/admin/*</code></li>
-                <li>Expected: <code>403</code>, Actual: <code>200</code></li>
-                <li>Impact: user enumeration & data exposure</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h3>Finding #2</h3>
-              <p><strong>Excessive Data Exposure</strong></p>
-              <ul>
-                <li>~900KB responses</li>
-                <li>No pagination</li>
-                <li>Higher risk & load</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h3>Fix</h3>
-              <ul>
-                <li>RBAC middleware: <code>requireAuth</code> + <code>requireRole('admin')</code></li>
-                <li>Protected <code>/api/admin/*</code></li>
-                <li>Data minimization + pagination</li>
-                <li>Admin audit logging</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h3>Status</h3>
-              <p><strong>Fixed</strong> — retested post-patch, no regression.</p>
-              <p class="muted">Period: <em>11.2025</em></p>
-            </div>
+          <div class="project-meta">
+            <span class="tag">portfolio</span>
+            <span class="tag">updates</span>
           </div>
-        </div>
-      </article>
 
-      <div class="about-block" style="margin-top:16px;">
-        <p><strong>More projects:</strong> (placeholder)</p>
-        <p class="muted">Add new cards here later.</p>
+          <a class="project-link" href="./coming-soon.html">Open →</a>
+        </article>
+
+        <!-- Project: Traffic PC Club Network -->
+        <article class="project-card">
+          <div class="project-top">
+            <h2>PC Club Network Security & Traffic Analysis</h2>
+            <span class="badge badge-soft">Research</span>
+          </div>
+
+          <p class="project-desc">
+            Traffic PC Club Network — independent security research focused on LAN/client traffic patterns,
+            client-side isolation, permissions, and architecture risks.
+          </p>
+
+          <ul class="project-list">
+            <li>Network traffic analysis (LAN, client → server)</li>
+            <li>Client software / launcher behavior review</li>
+            <li>Access control & isolation checks (user/admin)</li>
+            <li>Logic & misconfiguration risk assessment</li>
+            <li>Hardening recommendations (high-level)</li>
+          </ul>
+
+          <div class="project-meta">
+            <span class="tag">security research</span>
+            <span class="tag">traffic analysis</span>
+            <span class="tag">client-side</span>
+            <span class="tag">architecture</span>
+          </div>
+
+          <div class="project-foot">
+            <span class="status-dot"></span>
+            <span class="muted">Status: Research / Analysis (no exploitation)</span>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
   <script src="../assets/js/main.js"></script>
-  <script>
-    function toggleCase(){
-      const el = document.getElementById('casePreview');
-      el.hidden = !el.hidden;
-    }
-  </script>
 </body>
 </html>

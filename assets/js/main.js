@@ -145,3 +145,16 @@ function showToast(msg) {
   clearTimeout(t._timer);
   t._timer = setTimeout(() => t.classList.remove("show"), 1400);
 }
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("tgBtn")?.addEventListener("click", () => {
+    window.open("https://t.me/toriiiyuy", "_blank", "noopener,noreferrer");
+  });
+
+  document.getElementById("mailBtn")?.addEventListener("click", () => {
+    window.copyText?.("toriiiyyy@toriiiyyy.xyz");
+  });
+
+  document.getElementById("dcBtn")?.addEventListener("click", () => {
+    window.copyText?.("gofa");
+  });
+});
