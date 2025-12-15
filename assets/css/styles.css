@@ -387,3 +387,123 @@ button{font:inherit}
 }
 
 .muted{color:#9a9a9a;font-size:12px}
+/* ===== Projects (fix) ===== */
+.card-lg{
+  width: min(820px, 92vw);
+  text-align: left;
+}
+
+.projects-grid{
+  margin-top: 10px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 860px){
+  .projects-grid{ grid-template-columns: 1fr 1fr; }
+}
+
+.project-card{
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 0 18px rgba(0,0,0,.35);
+}
+
+.project-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.project-card h2{
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: .2px;
+}
+
+.project-desc{
+  font-size: 13px;
+  color: #cfcfcf;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.project-list{
+  margin: 8px 0 10px;
+  padding-left: 18px;
+}
+
+.project-list li{
+  font-size: 13px;
+  color: #cfcfcf;
+  margin-bottom: 4px;
+}
+
+.project-meta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tag{
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.10);
+  color: #dedede;
+}
+
+.badge{
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.08);
+  color: #eaeaea;
+}
+
+.badge-soft{
+  background: rgba(180,180,180,.12);
+}
+
+.project-link{
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.10);
+  transition: .25s;
+  user-select: none;
+}
+
+.project-link:hover{
+  background: rgba(255,255,255,.18);
+}
+
+.project-foot{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.status-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.65);
+  box-shadow: 0 0 10px rgba(255,255,255,.25);
+}
+
+/* background path (если у тебя wallpaper в assets/img/) */
+.bg{
+  background-image: url("/assets/img/wallpaper.jpg");
+}
