@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — toriiiyyy</title>
 
+  <link rel="icon" href="data:," />
   <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
 
@@ -15,7 +16,7 @@
   <!-- BACK BUTTON -->
   <a href="../index.html" class="back-btn">← Back</a>
 
-  <!-- MUSIC PLAYER (TOP CENTER) -->
+  <!-- MUSIC PLAYER -->
   <div class="player-badge" role="group" aria-label="Music player">
     <button id="playBtn" class="play-btn" type="button" aria-label="Play/Pause">▶</button>
     <div class="track">
@@ -30,45 +31,63 @@
   <main class="page is-ready">
     <section class="card card-lg">
       <h1>Projects</h1>
-      <p class="sub">selected work & research</p>
+      <p class="sub">selected work & security research</p>
 
       <div class="projects-grid">
-        <!-- Project: Coming soon (separate page) -->
+
+        <!-- Albion Profit Calculator -->
         <article class="project-card">
           <div class="project-top">
-            <h2>Coming Soon</h2>
-            <span class="badge">WIP</span>
+            <h2>Albion Profit Calculator</h2>
+            <span class="badge badge-soft">Security Case Study</span>
           </div>
+
           <p class="project-desc">
-            Additional security & backend projects, automation tooling, and new case studies.
+            Web application security audit focused on backend logic,
+            access control, and JWT-based authentication.
           </p>
 
+          <ul class="project-list">
+            <li>Critical Broken Access Control vulnerability identified</li>
+            <li>Unauthorized access to admin API endpoints prevented</li>
+            <li>RBAC model implemented and enforced</li>
+            <li>Excessive data exposure reduced</li>
+            <li>JWT security analysis (HS256)</li>
+          </ul>
+
           <div class="project-meta">
-            <span class="tag">portfolio</span>
-            <span class="tag">updates</span>
+            <span class="tag">backend</span>
+            <span class="tag">security audit</span>
+            <span class="tag">jwt</span>
+            <span class="tag">rbac</span>
+            <span class="tag">api</span>
           </div>
 
-          <a class="project-link" href="./coming-soon.html">Open →</a>
+          <div class="project-foot">
+            <span class="status-dot"></span>
+            <span class="muted">11.2025 · Fixed & verified</span>
+          </div>
         </article>
 
-        <!-- Project: Traffic PC Club Network -->
+        <!-- Traffic PC Club Network -->
         <article class="project-card">
           <div class="project-top">
             <h2>PC Club Network Security & Traffic Analysis</h2>
-            <span class="badge badge-soft">Research</span>
+            <span class="badge">Research</span>
           </div>
 
           <p class="project-desc">
-            Traffic PC Club Network — independent security research focused on LAN/client traffic patterns,
-            client-side isolation, permissions, and architecture risks.
+            Independent security research of the Traffic PC Club Network
+            focused on client-side isolation, LAN traffic patterns,
+            and system architecture risks.
           </p>
 
           <ul class="project-list">
             <li>Network traffic analysis (LAN, client → server)</li>
-            <li>Client software / launcher behavior review</li>
-            <li>Access control & isolation checks (user/admin)</li>
-            <li>Logic & misconfiguration risk assessment</li>
-            <li>Hardening recommendations (high-level)</li>
+            <li>Client software & launcher behavior review</li>
+            <li>Access control & user isolation checks</li>
+            <li>Logic & configuration risk assessment</li>
+            <li>High-level hardening recommendations</li>
           </ul>
 
           <div class="project-meta">
@@ -80,9 +99,30 @@
 
           <div class="project-foot">
             <span class="status-dot"></span>
-            <span class="muted">Status: Research / Analysis (no exploitation)</span>
+            <span class="muted">Status: Research / Analysis</span>
           </div>
         </article>
+
+        <!-- Coming Soon -->
+        <article class="project-card">
+          <div class="project-top">
+            <h2>Coming Soon</h2>
+            <span class="badge">WIP</span>
+          </div>
+
+          <p class="project-desc">
+            New security & backend projects, automation tools,
+            and additional case studies currently in development.
+          </p>
+
+          <div class="project-meta">
+            <span class="tag">portfolio</span>
+            <span class="tag">updates</span>
+          </div>
+
+          <a class="project-link" href="./coming-soon.html">Open →</a>
+        </article>
+
       </div>
     </section>
   </main>
