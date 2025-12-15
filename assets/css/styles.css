@@ -13,19 +13,17 @@ button{font:inherit}
 
 /* Background */
 .bg{
-  position:fixed; inset:0; z-index:0;
-  background-image:url("../wallpaper.jpg");
-  background-size:cover; background-position:center; background-repeat:no-repeat;
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background-image:url("/assets/wallpaper.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   filter:brightness(.72);
   animation:wind 20s ease-in-out infinite;
 }
-@keyframes wind{
-  0%{transform:scale(1) translate(0,0)}
-  25%{transform:scale(1.05) translate(-10px,-6px)}
-  50%{transform:scale(1.08) translate(8px,-12px)}
-  75%{transform:scale(1.05) translate(12px,6px)}
-  100%{transform:scale(1) translate(0,0)}
-}
+
 
 /* Page container + transitions */
 .page{
