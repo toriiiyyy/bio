@@ -16,13 +16,14 @@ button{font:inherit}
   position:fixed;
   inset:0;
   z-index:0;
-  background-image:url("/assets/wallpaper.jpg");
+  background-image:url("/assets/img/wallpaper.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
   filter:brightness(.72);
   animation:wind 20s ease-in-out infinite;
 }
+
 
 
 /* Page container + transitions */
